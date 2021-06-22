@@ -9,13 +9,13 @@ class DiaryController extends Controller
 {
     public function diary(Request $request){
 
-        $articles = DB::select('select * from article');
+        $articles = DB::select('select * from articles');
         return view('diary',['articles'=> $articles]);
     }
 
     public function post(Request $request){
 
-        $articles = DB::select('select * from article');
+        $articles = DB::select('select * from articles');
         return view('diary',['articles'=> $articles]);
     }
 
@@ -27,7 +27,7 @@ class DiaryController extends Controller
             'content' => $request->content,
         ];
 
-        DB::insert('insert into article (username, title, content) values (:username, :title, :content)', $param);
+        DB::insert('insert into articles (username, title, content) values (:username, :title, :content)', $param);
 
         return redirect('/hibanasdiary');
     }
